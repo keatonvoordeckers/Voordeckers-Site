@@ -14,3 +14,6 @@ db.sqlite3
 # Editor / OS
 .vscode/
 .DS_Store
+
+# Ignore the collected static files that are generated during deployment
+staticfiles/
