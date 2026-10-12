@@ -1,0 +1,21 @@
+# Exclude Windows virtual environment
+.venv/
+
+# Exclude git history
+.git/
+
+# Exclude Python's compiled bytecode
+__pycache__/
+*.pyc
+
+# Exclude local test database
+db.sqlite3
+
+# Exclude secret key and settings
+.env
+
+# Exclude output from collectstatic
+staticfiles/
+
+# Exclude editor settings
+.vscode/
