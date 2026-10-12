@@ -151,3 +151,16 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+# Security settings for production. HTTPS Only!
+# Skipped when DEBUG is on, because local dev server uses plain HTTP.
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https") # Trust X-Forwared-Proto: https from Railway
+    SECURE_SSL_REDIRECT = True # sends any http:// visitor to https://
+
+    # Browser only sends cookies over HTTPS
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
+    # Tells browser to only ever use HTTPS for this site for 1 hour
+    SECURE_HSTS_SECONDS = 3600 # 1 hour, TODO: Raise to 31536000 (1 year) once the custom domain works
