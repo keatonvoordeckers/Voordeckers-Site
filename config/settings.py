@@ -127,6 +127,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Uploaded photos
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
 # When deploying, Django collects all static files into this folder
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
