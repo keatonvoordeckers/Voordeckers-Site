@@ -140,8 +140,7 @@ STORAGES = {
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"}
 }
 
-#TODO: Replace comment with actual domain
-# Protection against forged form submissions. Real domain must be: https://placeholder.com 
+# Protection against forged form submissions. Real domain must be: https://ericvoordeckers.com
 # or logins and forms will be rejected
 CSRF_TRUSTED_ORIGINS = [
     origin for origin in os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",") if origin
