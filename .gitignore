@@ -17,3 +17,6 @@ db.sqlite3
 
 # Ignore the collected static files that are generated during deployment
 staticfiles/
+
+# Uploaded media
+media/
