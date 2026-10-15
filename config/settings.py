@@ -134,10 +134,32 @@ MEDIA_ROOT = BASE_DIR / "media"
 # When deploying, Django collects all static files into this folder
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+# Uploaded photos: Cloudflare R2 in production, local disk in development.
+R2_BUCKET = os.environ.get("R2_BUCKET")
+
+if R2_BUCKET:
+    DEFAULT_STORAGE = {
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+            "bucket_name": R2_BUCKET,
+            "endpoint_url": os.environ["R2_ENDPOINT_URL"],
+            "access_key": os.environ["R2_ACCESS_KEY_ID"],
+            "secret_key": os.environ["R2_SECRET_ACCESS_KEY"],
+            "custom_domain": os.environ["R2_PUBLIC_DOMAIN"],
+            "region_name": "auto",
+            "signature_version": "s3v4",
+            "querystring_auth": False,
+            "file_overwrite": False,
+            "object_parameters": {"CacheControl": "public, max-age=31536000, immutable"},
+        },
+    }
+else:
+    DEFAULT_STORAGE = {"BACKEND": "django.core.files.storage.FileSystemStorage"}
+
 # WhiteNoise compresses files and adds fingerprints to their names, so browsers can cache them safely
 STORAGES = {
-    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
-    "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"}
+    "default": DEFAULT_STORAGE,
+    "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
 }
 
 # Protection against forged form submissions. Real domain must be: https://ericvoordeckers.com
