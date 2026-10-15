@@ -136,7 +136,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # WhiteNoise compresses files and adds fingerprints to their names, so browsers can cache them safely
 STORAGES = {
-    "default": {"BACKEND": "django.cor.files.storage.FileSystemStorage"},
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"}
 }
 
