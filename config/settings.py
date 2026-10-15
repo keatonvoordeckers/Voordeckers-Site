@@ -162,6 +162,20 @@ STORAGES = {
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
 }
 
+# Print errors to the console so they appear in Railway's logs.
+# (Django's default only emails them to admins, which isn't set up.)
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {"class": "logging.StreamHandler"},
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+}
+
 # Protection against forged form submissions. Real domain must be: https://ericvoordeckers.com
 # or logins and forms will be rejected
 CSRF_TRUSTED_ORIGINS = [
