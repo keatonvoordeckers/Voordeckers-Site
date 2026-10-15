@@ -15,6 +15,7 @@ DISPLAY_SIZE = (2000, 2000)
 THUMBNAIL_SIZE = (600, 600)
 JPEG_QUALITY = 85
 
+
 def resize_image(uploaded, max_size):
     """Return a correctly rotated, metadata-free JPEG that fits within the given max_size"""
 
@@ -38,5 +39,5 @@ def resize_image(uploaded, max_size):
             icc_profile=icc_profile,
         )
 
-    name = f"{Path(uploaded.name).stem}.jpg" # Takes filenmame without extension, ex: IMG_1234.HEIC -> IMG_1234.jpg
+    name = f"{Path(uploaded.name).stem}.jpg" # Takes filename without extension, ex: IMG_1234.HEIC -> IMG_1234.jpg
     return ContentFile(buffer.getvalue(), name=name) # Wrap bytes so ImageField can save.
