@@ -11,8 +11,8 @@ from pathlib import Path
 from django.core.files.base import ContentFile
 from PIL import Image, ImageOps
 
-DISPLAY_SIZE(2000, 2000)
-THUMBNAIL_SIZE(600, 600)
+DISPLAY_SIZE = (2000, 2000)
+THUMBNAIL_SIZE = (600, 600)
 JPEG_QUALITY = 85
 
 def resize_image(uploaded, max_size):
@@ -27,7 +27,7 @@ def resize_image(uploaded, max_size):
         img.thumbnail(max_size, Image.Resampling.LANCZOS)
 
         # Save JPEG to memory, then hand bytes to Django
-        buffer = BytesIO
+        buffer = BytesIO()
         # Exclude exif= argument to strip metadata like GPS coordinates, camera details and timestamps
         img.save( 
             buffer,

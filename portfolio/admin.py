@@ -26,8 +26,10 @@ class PhotoInline(admin.TabularInline):
     def preview (self, photo):
         """Method called for each photo row for display"""
 
+        # use thumbnail for preview
+        image = photo.thumbnail or photo.image
         if photo.image: # if theres an image, build <img> tag.
-            return format_html('<img src="{}"  style="height: 80px">', photo.image.url)
+            return format_html('<img src="{}"  style="height: 80px">', image.url)
         return "" # show nothing for empty rows
 
 @admin.register(Project)
