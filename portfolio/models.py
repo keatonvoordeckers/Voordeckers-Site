@@ -1,7 +1,7 @@
 """Models for the portfolio: categories of work, project groupings, and photos."""
 
 from django.db import models
-
+from .images import DISPLAY_SIZE, THUMBNAIL_SIZE, resize_image
 
 class Category(models.Model):
     """A type of work with its own gallery page, e.g. Stair Rails or Ceilings."""
@@ -63,6 +63,12 @@ class Photo(models.Model):
         related_name="photos" # Allows for getting all Photos in a given Project
     )
     image = models.ImageField(upload_to="projects/%Y/%m/") # store image file path, ex: projects/2026/10/
+    image = models.ImageField(upload_to="projects/%Y/%m/")
+    thumbnail = models.ImageField(
+        upload_to="projects/%Y/%m/thumbs/", # keep thumbnails in their own subfolder
+        blank=True, 
+        editable=False # hide from admin forms, thumbnails are generated
+    )
     caption = models.CharField(max_length=200, blank=True)
     order = models.PositiveIntegerField(default=0)
     uploaded_at = models.DateTimeField(auto_now_add=True) # Store when row is created and photo is uploaded
@@ -73,5 +79,13 @@ class Photo(models.Model):
     # Method to return string representation of Photo, ex: Sandy House Ceiling - photo 3
     def __str__(self):
         return f"{self.project.title} - photo {self.order}" 
+
+    # Method to override Model.save() to call image_processing method
+    def save(self, *args, **kwargs):
+        # Only process a newly uploaded file, not every time the photo is updated
+        if self.image and not self.image._committed:
+            self.thumbnail = resize_image(self.image, THUMBNAIL_SIZE)
+            self.image = resize_image(self.image, DISPLAY_SIZE)
+        super().save(*args, **kwargs) # Call Djangos orginal save()
 
     
