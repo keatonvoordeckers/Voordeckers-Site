@@ -1,7 +1,10 @@
 from django.shortcuts import render
 
+from portfolio.models import Category
+
 def home(request):
-    return render(request, "pages/home.html") # Render loads a template, fills it in, and returns it as the HTTP response.
+    categories = Category.objects.all()
+    return render(request, "pages/home.html", {"categories": categories})
 
 # TODO: placeholder
 def about(request):

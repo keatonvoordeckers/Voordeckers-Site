@@ -1,6 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Welcome</h1>
-    <p>Gallery categories will go here.</p>
+    <section class="hero">
+        <h1>Custom finish carpentry.</h1>
+        <p>Stair rails, ceilings, wall treatments, built-ins and more, crafted by Eric Voordeckers.</p>
+        <a href="{% url 'contact' %}" class="button">Get in touch</a>
+    </section>
+
+    <section aria-labelledby="work-heading">
+        <h2 id="work-heading">My Work</h2>
+        <ul class="category-grid">
+            {% for category in categories %}
+                <li>
+                    <a href="{% url 'portfolio:category' category.slug %}" class="category-card">
+                        {% with photo=category.cover %}
+                            {% if photo %}
+                                <img src="{{ photo.thumbnail_url }}" alt="{{ category.name }} by Eric Voordeckers" loading="lazy">
+                            {% else %}
+                                <div class="placeholder">Photos coming soon</div>
+                            {% endif %}
+                        {% endwith %}
+                        <h3>{{ category.name }}</h3>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
 {% endblock %}

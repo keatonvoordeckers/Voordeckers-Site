@@ -133,3 +133,68 @@ img {
 .button:hover {
     background: var(--color-accent-dark);
 }
+
+/* ---------- Home: hero ---------- */
+.hero {
+    max-width: 40rem;
+    padding-block: 2rem 3rem;
+}
+
+.hero h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.hero p {
+    margin: 0 0 1.5rem;
+    font-size: 1.15rem;
+    color: var(--color-muted);
+}
+
+/* ---------- Home: category grid ---------- */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.category-card {
+    display: block;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.category-card:hover,
+.category-card:focus-visible {
+    box-shadow: 0 6px 20px rgb(0 0 0 / 0.12);
+    transform: translateY(-2px);
+}
+
+.category-card img,
+.category-card .placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.category-card .placeholder {
+    display: grid;
+    place-items: center;
+    background: var(--color-border);
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+
+.category-card h3 {
+    margin: 0;
+    padding: 0.9rem 1rem;
+    font-size: 1.15rem;
+}
