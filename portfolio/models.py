@@ -75,7 +75,6 @@ class Photo(models.Model):
         related_name="photos" # Allows for getting all Photos in a given Project
     )
     image = models.ImageField(upload_to="projects/%Y/%m/") # store image file path, ex: projects/2026/10/
-    image = models.ImageField(upload_to="projects/%Y/%m/")
     thumbnail = models.ImageField(
         upload_to="projects/%Y/%m/thumbs/", # keep thumbnails in their own subfolder
         blank=True, 

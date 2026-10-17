@@ -9,6 +9,7 @@
     <meta name="description" content="{% block description %}Custom finish carpentry by Eric Voordeckers: stair rails, ceilings, wall 
     treatments, fireplace mantels, mud benches & window seats, columns, cabinets & bookshelves, and bunk beds.{% endblock %}">
     <link rel="stylesheet" href="{% static 'css/site.css' %}">
+    {% block extra_head %}{% endblock %}
 </head>
 <!-- Body: -->
 <body>
@@ -35,5 +36,6 @@
             <p>&copy; {% now "Y" %} Eric Voordeckers · Finish Carpentry</p>
         </div>
     </footer>
+    {% block scripts %}{% endblock %}
 </body>
 </html>
