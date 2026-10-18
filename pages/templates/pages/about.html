@@ -1,8 +1,24 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}About | Eric Voordeckers{% endblock %}
 
 {% block content %}
-    <h1>About</h1>
-    <p>Coming soon.</p>
+    <div class="about">
+        <div class="about-text">
+            <h1>About Eric</h1>
+            {# TODO: replace with Eric's bio #}
+            <p>Coming soon.</p>
+            <p>(Years of experience, specifics, places worked, etc.)</p>
+
+            <div class="about-actions">
+                <a href="{% url 'contact' %}" class="button">Get in touch</a>
+                {# TODO: uncomment once I have resume PDF is in static/files/ #}
+                {# <a href="{% static 'files/eric-voordeckers-resume.pdf' %}" class="button button-outline" download>Download resume</a> #}
+            </div>
+        </div>
+
+        {# TODO: uncomment once I have Eric's headshot is in static/images/ #}
+        {# <img src="{% static 'images/eric.jpg' %}" alt="Eric Voordeckers" class="about-photo"> #}
+    </div>
 {% endblock %}

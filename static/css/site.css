@@ -264,3 +264,105 @@ img {
 .empty {
     color: var(--color-muted);
 }
+
+/* ---------- About ---------- */
+.about {
+    display: grid;
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (min-width: 768px) {
+    .about {
+        grid-template-columns: 3fr 2fr;
+    }
+}
+
+.about-text {
+    max-width: 40rem;
+}
+
+.about-photo {
+    width: 100%;
+    border-radius: var(--radius);
+}
+
+.about-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.button-outline {
+    border: 2px solid var(--color-accent);
+    background: transparent;
+    color: var(--color-accent);
+}
+
+.button-outline:hover {
+    background: var(--color-accent);
+    color: #fff;
+}
+
+/* ---------- Contact form ---------- */
+.contact {
+    max-width: 40rem;
+}
+
+.contact-form .field {
+    margin-bottom: 1.25rem;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    font: inherit;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    border-color: var(--color-accent);
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+}
+
+.contact-form .errorlist {
+    margin: 0.35rem 0 0;
+    padding: 0;
+    list-style: none;
+    color: #b42318;
+    font-size: 0.9rem;
+}
+
+/* Honeypot: off-screen, so people never see it but bots still fill it in */
+.hp {
+    position: absolute;
+    left: -9999px;
+}
+
+/* ---------- Messages ---------- */
+.messages {
+    margin: 0 0 1.5rem;
+    padding: 0;
+    list-style: none;
+}
+
+.message {
+    padding: 0.9rem 1rem;
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+}

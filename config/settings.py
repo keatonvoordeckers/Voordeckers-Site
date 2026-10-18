@@ -194,6 +194,10 @@ MAILERS = {
     },
 }
 
+# Where contact form messages are sent, and who they're sent from
+CONTACT_EMAIL = os.environ.get("CONTACT_EMAIL", "edvoordeckers@gmail.com")
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "Website <noreply@ericvoordeckers.com>")
+
 # Security settings for production. HTTPS Only!
 # Skipped when DEBUG is on, because local dev server uses plain HTTP.
 if not DEBUG:
