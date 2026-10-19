@@ -22,4 +22,4 @@ EXPOSE 8000
 # Runs on container start. Applies database migrations and starts gunicorn
 # --workers 2 runs two separate processes, so if one crashes the other keeps serving
 # --threads 4 gives each worker 4 threads, so it can handle several connections at once.
-CMD ["sh", "-c", "python manage.py migrate --noinput && exec gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 2 --threads 4"]
+CMD ["sh", "-c", "python manage.py migrate --noinput && exec gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 2 --threads 4 --timeout 120"]
