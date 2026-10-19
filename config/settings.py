@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages',
     'portfolio',
+    'anymail',
 ]
 
 # Runs top-to-bottom on each request
@@ -188,14 +189,25 @@ CSRF_TRUSTED_ORIGINS = [
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
-MAILERS = {
-    'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
-    },
-}
+# Email: Resend in production (via Anymail), printed to the console in development.
+RESEND_API_KEY = os.environ.get("RESEND_API_KEY")
+
+if RESEND_API_KEY:
+    MAILERS = {
+        "default": {
+            "BACKEND": "anymail.backends.resend.EmailBackend",
+        },
+    }
+    ANYMAIL = {"RESEND_API_KEY": RESEND_API_KEY.strip()}
+else:
+    MAILERS = {
+        "default": {
+            "BACKEND": "django.core.mail.backends.console.EmailBackend",
+        },
+    }
 
 # Where contact form messages are sent, and who they're sent from
-CONTACT_EMAIL = os.environ.get("CONTACT_EMAIL", "edvoordeckers@gmail.com")
+CONTACT_EMAIL = os.environ.get("CONTACT_EMAIL", "eric@example.com")
 DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "Website <noreply@ericvoordeckers.com>")
 
 # Security settings for production. HTTPS Only!
