@@ -1,29 +1,34 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <section class="hero">
-        <h1>Custom finish carpentry.</h1>
-        <p>Stair rails, ceilings, wall treatments, built-ins and more, crafted by Eric Voordeckers.</p>
-        <a href="{% url 'contact' %}" class="button">Get in touch</a>
-    </section>
+<section class="hero">
+    <h1>Custom finish carpentry.</h1>
+    <p>Stair rails, ceilings, wall treatments, built-ins and more, crafted by Eric Voordeckers.</p>
+    <a href="{% url 'contact' %}" class="button">Get in touch</a>
+</section>
 
-    <section aria-labelledby="work-heading">
-        <h2 id="work-heading">My Work</h2>
-        <ul class="category-grid">
-            {% for category in categories %}
-                <li>
-                    <a href="{% url 'portfolio:category' category.slug %}" class="category-card">
-                        {% with photo=category.cover %}
-                            {% if photo %}
-                                <img src="{{ photo.thumbnail_url }}" alt="{{ category.name }} by Eric Voordeckers" loading="lazy">
-                            {% else %}
-                                <div class="placeholder">Photos coming soon</div>
-                            {% endif %}
-                        {% endwith %}
-                        <h3>{{ category.name }}</h3>
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </section>
+<section aria-labelledby="work-heading">
+    <h2 id="work-heading">My Work</h2>
+    <ul class="category-grid">
+        {% for category in categories %}
+        <li>
+            <a href="{% url 'portfolio:category' category.slug %}" class="category-card">
+                <div class="tile-image">
+                    {% with photo=category.cover %}
+                    {% if photo %}
+                    <img src="{{ photo.thumbnail_url }}"
+                        srcset="{{ photo.thumbnail_url }} 600w, {{ photo.image.url }} 2000w"
+                        sizes="(min-width: 640px) 50vw, 100vw" alt="{{ category.name }} by Eric Voordeckers"
+                        loading="lazy">
+                    {% else %}
+                    <div class="placeholder">Photos coming soon</div>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+                <h3>{{ category.name }}</h3>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
 {% endblock %}
