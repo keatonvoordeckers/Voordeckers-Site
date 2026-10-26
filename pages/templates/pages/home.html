@@ -1,11 +1,20 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% load static %}
+
+{% block hero %}
 <section class="hero">
-    <h1>Custom finish carpentry.</h1>
-    <p>Stair rails, ceilings, wall treatments, built-ins and more, crafted by Eric Voordeckers.</p>
-    <a href="{% url 'contact' %}" class="button">Get in touch</a>
+    <img src="{% static 'images/hero.jpg' %}" alt="A finished carpentry project by Eric Voordeckers" class="hero-image"
+        fetchpriority="high">
+    <div class="container hero-content">
+        <h1>Custom finish carpentry.</h1>
+        <p>Stair rails, ceilings, wall treatments, built-ins and more, crafted by Eric Voordeckers.</p>
+        <a href="{% url 'contact' %}" class="button">Get in touch</a>
+    </div>
 </section>
+{% endblock %}
+
+{% block content %}
 
 <section aria-labelledby="work-heading">
     <h2 id="work-heading">My Work</h2>

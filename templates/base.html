@@ -1,17 +1,23 @@
 {% load static %}
+
 <!doctype html>
 <html lang="en">
+
 <!-- Header: -->
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Eric Voordeckers | Finish Carpentry{% endblock %}</title>
-    <meta name="description" content="{% block description %}Custom finish carpentry by Eric Voordeckers: stair rails, ceilings, wall 
+    <meta name="description"
+        content="{% block description %}Custom finish carpentry by Eric Voordeckers: stair rails, ceilings, wall 
     treatments, fireplace mantels, mud benches & window seats, columns, cabinets & bookshelves, and bunk beds.{% endblock %}">
     <link rel="stylesheet" href="{% static 'css/site.css' %}">
     {% block extra_head %}{% endblock %}
 </head>
+
 <!-- Body: -->
+
 <body>
     <header class="site-header">
         <div class="container header-inner">
@@ -27,13 +33,15 @@
         </div>
     </header>
 
+    {% block hero %}{% endblock %}
+
     <main class="container">
         {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li class="message message-{{ message.tags }}" role="status">{{ message }}</li>
-                {% endfor %}
-            </ul>
+        <ul class="messages">
+            {% for message in messages %}
+            <li class="message message-{{ message.tags }}" role="status">{{ message }}</li>
+            {% endfor %}
+        </ul>
         {% endif %}
         {% block content %}{% endblock %}
     </main>
@@ -45,4 +53,5 @@
     </footer>
     {% block scripts %}{% endblock %}
 </body>
+
 </html>
