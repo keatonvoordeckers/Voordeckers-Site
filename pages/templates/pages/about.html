@@ -2,23 +2,39 @@
 {% load static %}
 
 {% block title %}About | Eric Voordeckers{% endblock %}
+{% block description %}About Eric Voordeckers, a finish carpenter specializing in stair rails, ceilings, wall treatments and custom built-ins.{% endblock %}
 
 {% block content %}
-    <div class="about">
+    <section class="about-intro">
+        <img src="{% static 'images/eric.jpg' %}" alt="Eric Voordeckers" class="about-photo">
+
         <div class="about-text">
             <h1>About Eric</h1>
+            <p class="about-role">Finish Carpenter &middot; [City, State]</p>
             {# TODO: replace with Eric's bio #}
-            <p>Coming soon.</p>
-            <p>(Years of experience, specifics, places worked, etc.)</p>
-
-            <div class="about-actions">
-                <a href="{% url 'contact' %}" class="button">Get in touch</a>
-                {# TODO: uncomment once I have resume PDF is in static/files/ #}
-                {# <a href="{% static 'files/eric-voordeckers-resume.pdf' %}" class="button button-outline" download>Download resume</a> #}
-            </div>
+            <p>[Paragraph 1: Coming soon]</p>
+            <p>[Paragraph 2: Coming soon.]</p>
         </div>
+    </section>
 
-        {# TODO: uncomment once I have Eric's headshot is in static/images/ #}
-        {# <img src="{% static 'images/eric.jpg' %}" alt="Eric Voordeckers" class="about-photo"> #}
-    </div>
+    <section class="about-section" aria-labelledby="credentials-heading">
+        <h2 id="credentials-heading">Licenses &amp; Certifications</h2>
+        {# TODO: one <li> per license or certification #}
+        <ul class="credentials">
+            <li>
+                <strong>[License or certification name]</strong>
+                <span>[Issuing body] &middot; #[number]</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="about-section" aria-labelledby="resume-heading">
+        <h2 id="resume-heading">Work</h2>
+        <p>Get in touch or download resume.</p>
+        <div class="about-actions">
+            <a href="{% url 'contact' %}" class="button">Get in touch</a>
+            {# TODO: uncomment once the resume PDF is in static/files/ #}
+            {# <a href="{% static 'files/eric-voordeckers-resume.pdf' %}" class="button button-outline" download>Download resume</a> #}
+        </div>
+    </section>
 {% endblock %}
