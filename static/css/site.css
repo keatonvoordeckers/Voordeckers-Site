@@ -247,12 +247,6 @@ img {
     color: var(--color-accent);
 }
 
-.category-card h3 {
-    margin: 0;
-    padding: 0.9rem 1rem;
-    font-size: 1.15rem;
-}
-
 /* ---------- Gallery pages ---------- */
 .back-link {
     display: inline-block;
@@ -280,7 +274,6 @@ img {
     position: relative;
     display: block;
     overflow: hidden;
-    border-radius: var(--radius);
 }
 
 .project-cover img {
