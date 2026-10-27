@@ -14,6 +14,8 @@ from pathlib import Path
 
 import os
 
+import sys
+
 import dj_database_url
 
 from dotenv import load_dotenv
@@ -164,6 +166,14 @@ STORAGES = {
     "default": DEFAULT_STORAGE,
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
 }
+
+# Tests: keep uploads in memory (never touch R2 or media/) and skip the static file manifest
+TESTING = "test" in sys.argv[1:2]
+if TESTING:
+    STORAGES = {
+        "default": {"BACKEND": "django.core.files.storage.InMemoryStorage"},
+        "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
+    }
 
 # Print errors to the console so they appear in Railway's logs.
 # (Django's default only emails them to admins, which isn't set up.)
