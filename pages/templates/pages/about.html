@@ -9,32 +9,33 @@
         <img src="{% static 'images/eric.jpg' %}" alt="Eric Voordeckers" class="about-photo">
 
         <div class="about-text">
-            <h1>About Eric</h1>
-            <p class="about-role">Finish Carpenter &middot; [City, State]</p>
-            {# TODO: replace with Eric's bio #}
-            <p>[Paragraph 1: Coming soon]</p>
-            <p>[Paragraph 2: Coming soon.]</p>
+            <h1>About Me</h1>
+            <p class="about-role">Impact Carpentry &amp; Construction, Inc.</p>
+            <p>With 20 years of extensive experience in residential and light commercial construction, I specialize in projects ranging from high-end custom homes to the unique one room residential remodels. I am passionate about creating distinctive features that add character to a home and bring pride to its owner.</p>
+            <p>In my work, I maintain a strong commitment to exceptional attention to detail, job site cleanliness, and clear communication regarding job details, scheduling, and completion.</p>
+            <p>I would welcome the opportunity to discuss how I can contribute to your upcoming projects.</p>
         </div>
     </section>
 
     <section class="about-section" aria-labelledby="credentials-heading">
         <h2 id="credentials-heading">Licenses &amp; Certifications</h2>
-        {# TODO: one <li> per license or certification #}
         <ul class="credentials">
             <li>
-                <strong>[License or certification name]</strong>
-                <span>[Issuing body] &middot; #[number]</span>
+                <strong>Licensed General Contractor &mdash; B100 General Building Contractor</strong>
+                <span>Impact Carpentry &amp; Construction, Inc.</span>
+                <span>Utah Division of Professional Licensing &middot; License #9002328-5501</span>
+                <span>Registered with the Utah Residence Lien Recovery Fund</span>
+                <a href="https://secure.utah.gov/llv/search/index.html" target="_blank" rel="noopener">Verify this license &rarr;</a>
             </li>
         </ul>
     </section>
 
     <section class="about-section" aria-labelledby="resume-heading">
-        <h2 id="resume-heading">Work</h2>
-        <p>Get in touch or download resume.</p>
+        <h2 id="resume-heading">Work With Me</h2>
+        <p>Get in touch or download my resume.</p>
         <div class="about-actions">
             <a href="{% url 'contact' %}" class="button">Get in touch</a>
-            {# TODO: uncomment once the resume PDF is in static/files/ #}
-            {# <a href="{% static 'files/eric-voordeckers-resume.pdf' %}" class="button button-outline" download>Download resume</a> #}
+            <a href="{% static 'files/eric-voordeckers-resume.pdf' %}" class="button button-outline" download>Download resume</a>
         </div>
     </section>
 {% endblock %}
