@@ -66,3 +66,12 @@ class ContactFormTests(TestCase):
                 response = self.client.post(reverse("contact"), self.valid_data)
         self.assertRedirects(response, reverse("contact"))
         self.assertEqual(ContactMessage.objects.count(), 1)
+
+    def test_sitemap_lists_category_pages(self):
+        response = self.client.get("/sitemap.xml")
+        self.assertContains(response, "/work/ceilings/")
+
+    def test_robots_txt_points_to_sitemap(self):
+        response = self.client.get("/robots.txt")
+        self.assertEqual(response["Content-Type"], "text/plain")
+        self.assertContains(response, "sitemap.xml")

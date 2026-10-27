@@ -96,6 +96,7 @@ class GalleryViewTests(TestCase):
     def test_unknown_category_returns_404(self):
         response = self.client.get("/work/kitchens/")
         self.assertEqual(response.status_code, 404)
+        self.assertTemplateUsed(response, "404.html")
 
     def test_gallery_uses_a_fixed_number_of_queries(self):
         # Category + projects + all their photos, however many projects there are

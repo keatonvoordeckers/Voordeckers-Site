@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'pages',
     'portfolio',
     'anymail',
+    'django.contrib.sitemaps',
 ]
 
 # Runs top-to-bottom on each request
@@ -231,4 +232,4 @@ if not DEBUG:
     CSRF_COOKIE_SECURE = True
 
     # Tells browser to only ever use HTTPS for this site for 1 hour
-    SECURE_HSTS_SECONDS = 3600 # 1 hour, TODO: Raise to 31536000 (1 year) once the custom domain works
+    SECURE_HSTS_SECONDS = 31536000 # 1 year

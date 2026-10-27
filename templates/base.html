@@ -12,7 +12,16 @@
     <meta name="description"
         content="{% block description %}Custom finish carpentry by Eric Voordeckers: stair rails, ceilings, wall 
     treatments, fireplace mantels, mud benches & window seats, columns, cabinets & bookshelves, and bunk beds.{% endblock %}">
+    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Eric Voordeckers Finish Carpentry">
+    <meta property="og:title" content="Eric Voordeckers | Finish Carpentry">
+    <meta property="og:description" content="Custom stair rails, ceilings, wall treatments, mantels and built-ins.">
+    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+    <meta property="og:image" content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/hero.jpg' %}{% endblock %}">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="{% static 'css/site.css' %}">
+    <link rel="icon" href="{% static 'favicon.svg' %}" type="image/svg+xml">
     {% block extra_head %}{% endblock %}
 </head>
 

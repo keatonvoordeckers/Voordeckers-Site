@@ -2,6 +2,8 @@
 
 {% block title %}{{ category.name }} | Eric Voordeckers{% endblock %}
 
+{% block og_image %}{% if preview_photo %}{{ preview_photo.image.url }}{% else %}{{ block.super }}{% endif %}{% endblock %}
+
 {% block extra_head %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
 {% endblock %}

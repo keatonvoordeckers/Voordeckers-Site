@@ -1,6 +1,8 @@
 """Models for the portfolio: categories of work, project groupings, and photos."""
 
 from django.db import models
+from django.urls import reverse
+
 from .images import DISPLAY_SIZE, THUMBNAIL_SIZE, resize_image
 
 class Category(models.Model):
@@ -22,6 +24,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
+    def get_absolute_url(self):
+        """The category's gallery page URL, e.g. /work/ceilings/."""
+        return reverse("portfolio:category", args=[self.slug])
+    
 
     @property
     def cover(self):
