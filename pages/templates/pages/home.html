@@ -4,8 +4,11 @@
 
 {% block hero %}
 <section class="hero">
-    <img src="{% static 'images/hero.jpg' %}" alt="A finished carpentry project by Eric Voordeckers" class="hero-image"
-        fetchpriority="high">
+    <img src="{% static 'images/hero.jpg' %}"
+             srcset="{% static 'images/hero-1000.jpg' %} 1000w, {% static 'images/hero.jpg' %} 1499w"
+             sizes="100vw"
+             width="1499" height="2000"
+             alt="..." class="hero-image" fetchpriority="high">
     <div class="container hero-content">
         <h1>Custom finish carpentry.</h1>
         <p>Stair rails, ceilings, wall treatments, built-ins and more, crafted by Eric Voordeckers.</p>

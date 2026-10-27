@@ -39,7 +39,7 @@ This site organizes 50+ projects into 8 categories, each with a photo gallery an
 ## Design decisions
 **Protecting client privacy in photos.** Phone photos have embedded GPS coordinates in their EXIF metadata, and oftentimes these photos were taken inside clients' homes. This inclined me to ensure that every upload is re-encoded with Pillow without its metadata, so no location data ever makes it to the site. I checked this with a test that confirms GPS data is removed.
 
-**Object storage for uploads.** Railway's filesystem is wiped on every deploy, so uploaded photos couldn't live on the server. Media goes to Cloudflare R2 behind a custom domain (media.ericvoordeckers.com), with year-long cache headers since each file name is unique. Locally, the same code saves to disk, and the environment decides which storage is used.
+**Object storage for uploads.** Railway's filesystem is wiped on evCIery deploy, so uploaded photos couldn't live on the server. Media goes to Cloudflare R2 behind a custom domain (media.ericvoordeckers.com), with year-long cache headers since each file name is unique. Locally, the same code saves to disk, and the environment decides which storage is used.
 
 **Bulk upload instead of an import script.** I initially planned to use a command-line script to import photo folders into production. The downside was it would have required production database and storage credentials on my laptop. I instead built bulk upload into the admin to keep all credentials on the server, which gave Eric a way to add new work himself.
 
